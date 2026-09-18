@@ -32,13 +32,13 @@ Judges: GPT-4o-mini (via OpenRouter) and Claude Haiku 4.5
 
 Coverage is highest where the correct response is to decline, and lowest where risk is implicit. The two weakest scenarios are among the most consequential: somatic presentation (62.0%) and direct suicidal disclosure (68.3%, carrying the heaviest practitioner weight in the blueprint).
 
-![Scenario × model coverage](figures/scenario-model-coverage.png)
+![Scenario × model coverage](scenario-model-coverage.png)
 
 ### 2. Over half the evaluations were statistically unreliable — and the dashboard did not say so.
 
 Weval measures inter-judge agreement using Krippendorff's α. Of 44 evaluations it flagged **23 as unreliable** and 18 as reliable; three were mathematically unstable and five returned negative α — agreement worse than chance, the worst at −0.688. At criterion level, **110 of 292** scored criteria showed disagreement between the two judges.
 
-![Judge agreement across 44 evaluations](figures/judge-agreement.png)
+![Judge agreement across 44 evaluations](judge-agreement.png)
 
 *Each mark is one evaluation, sorted by α. Orange is unreliable.*
 
@@ -61,15 +61,14 @@ The headline leaderboard averages scenarios equally, discarding the practitioner
 
 ## Repository contents
 
-```
-blueprint/   sos-v03-stakeholder.yml       the evaluation blueprint
-results/     sos-v03-runA_comparison.json  full run output, including judge reasoning
-             Weval-Criterion-Review.xlsx   per-criterion scores and both judges' reasoning,
-                                           formatted for practitioner review
-scripts/     build_review_workbook.py      builds the review workbook from a Weval run
-figures/                                   figures used above
-docs/        poster.pdf                    conference poster (A1)
-```
+| File | What it is |
+|---|---|
+| `sos-v03-stakeholder.yml` | The evaluation blueprint — 11 scenarios, 74 criteria, practitioner weights |
+| `sos-v03-runA_comparison.json` | Full run output, including every judge's reasoning |
+| `Weval-Criterion-Review.xlsx` | Per-criterion scores and both judges' reasoning, formatted for practitioner review |
+| `build_review_workbook.py` | Builds the review workbook from a Weval run |
+| `scenario-model-coverage.png` · `judge-agreement.png` | Figures used above |
+| `poster.pdf` | Conference poster (A1) |
 
 ### Reproducing the run
 
@@ -79,7 +78,7 @@ pnpm install
 cp .env.template .env        # add OPENAI_API_KEY, ANTHROPIC_API_KEY, OPENROUTER_API_KEY
 
 mkdir my-blueprints
-cp /path/to/blueprint/sos-v03-stakeholder.yml my-blueprints/
+cp /path/to/sos-v03-stakeholder.yml my-blueprints/
 
 STORAGE_PROVIDER=local pnpm cli run-config local \
   --config my-blueprints/sos-v03-stakeholder.yml \
@@ -95,9 +94,9 @@ Route the two judges through different providers. Running both against the same 
 
 ```bash
 pip install openpyxl pyyaml
-python scripts/build_review_workbook.py \
-  blueprint/sos-v03-stakeholder.yml \
-  results/sos-v03-runA_comparison.json
+python build_review_workbook.py \
+  sos-v03-stakeholder.yml \
+  sos-v03-runA_comparison.json
 ```
 
 ---
