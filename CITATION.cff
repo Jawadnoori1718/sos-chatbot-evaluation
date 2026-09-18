@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Who Judges the Judges? Stakeholder-defined evaluation of candidate base models for a student wellbeing signposting chatbot"
+message: "If you use this work, please cite it as below."
+type: dataset
+authors:
+  - family-names: Noori
+    given-names: Jawad
+    affiliation: "School of Computer Science, University of Nottingham"
+year: 2026
+license: MIT
+abstract: >-
+  An accessibility screen applied to 31 LLM evaluation tools, a stakeholder-derived
+  evaluation blueprint of 11 scenarios and 74 criteria for a university student
+  wellbeing signposting chatbot, and results for four candidate base models scored
+  by a dual cross-provider LLM judge panel. Reports a safety pattern in the models
+  and an under-surfaced reliability problem in the evaluation itself.
+keywords:
+  - AI assurance
+  - LLM evaluation
+  - mental health
+  - LLM-as-judge
+  - inter-rater reliability
